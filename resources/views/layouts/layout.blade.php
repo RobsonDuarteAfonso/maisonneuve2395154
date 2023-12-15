@@ -13,10 +13,20 @@
     </div>
     <div class="col-12 bg-secondary text-center py-3">
         <nav>
-            <a href="/" data-link class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Home</a>
-            <a href="/brands" data-link class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Brands</a>
+            <a href="/students" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Students</a>
+            <a href="#" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Cities</a>
         </nav>
     </div>
+
+    @if(session('success'))
+        <div class="container-lg mt-4">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ session('success')}}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
     @yield('content')
 </body>
 </html>

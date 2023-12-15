@@ -21,11 +21,11 @@ use App\Http\Controllers\CityController;
 
 Route::get('/', [StudentController::class, 'index'])->name('student.index');
 Route::get('/students', [StudentController::class, 'index'])->name('student.index');
-Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
+Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
 Route::get('/student-create', [StudentController::class, 'create'])->name('student.create');
 Route::post('/student-create', [StudentController::class, 'store'])->name('student.store');
-Route::get('/student-edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
-Route::put('/student-edit/{id}', [StudentController::class, 'update'])->name('student.edit');
-Route::delete('/student/{id}', [StudentController::class, 'destroy'])->name('student.delete');
+Route::get('/student-edit/{student}', [StudentController::class, 'edit'])->name('student.edit');
+Route::put('/student-edit/{student}', [StudentController::class, 'update'])->name('student.edit');
+Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name('student.delete');
 
 //https://github.com/markitosanches/cadriciel22645/blob/main/my-blog/app/Http/Controllers/BlogPostController.php
