@@ -10,8 +10,6 @@ use App\Models\City;
  */
 class CityFactory extends Factory
 {
-
-    protected $model = City::class;
     /**
      * Define the model's default state.
      *
@@ -20,7 +18,7 @@ class CityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->city
+            'name' => fake()->city()
         ];
     }
 }

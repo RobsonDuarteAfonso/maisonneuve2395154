@@ -13,7 +13,15 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::select(
+            'students.id',
+            'students.name as name',
+            'email',
+            'cities.name as city_name'
+        )
+        ->join('cities', 'cities.id','=','city_id')
+        ->get();
+
         return view('student.index', compact('students'));
     }
 

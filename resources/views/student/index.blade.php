@@ -17,7 +17,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Courriel</th>
-                        <th scope="col">Phone</th>
+                        <th scope="col">Ville</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@
                         <th scope="row">{{ $student->id }}</th>
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->email }}</td>
-                        <td>{{ $student->phone }}</td>
+                        <td>{{ $student->city_name }}</td>
                         <td><a class="btn btn-info" href="{{ route('student.show', $student->id) }}" role="button">Détails</a></td>
                     </tr>
                     @empty
