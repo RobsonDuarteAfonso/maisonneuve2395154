@@ -17,7 +17,12 @@
 
             <div class="mb-3">
                 <p class="fw-bold">Nom<p>
-                <p>{{ $student->name }}</p>
+                <p>{{ $user->name }}</p>
+            </div>
+
+            <div class="mb-3">
+                <p class="fw-bold">Courriel<p>
+                <p>{{ $user->email }}</p>
             </div>
 
             <div class="mb-3">
@@ -28,11 +33,6 @@
             <div class="mb-3">
                 <p class="fw-bold">Phone<p>
                 <p>{{ $student->phone }}</p>
-            </div>
-
-            <div class="mb-3">
-                <p class="fw-bold">Courriel<p>
-                <p>{{ $student->email }}</p>
             </div>
 
             <div class="mb-3">
@@ -49,7 +49,7 @@
 
         <div class="card-footer d-inline-flex">
             <div class="col-12">
-                <a href="{{ route('student.edit', $student->id)}}" class="btn btn-warning">Modifier</a>
+                <a href="{{ route('student.edit', $student->user_id)}}" class="btn btn-warning">Modifier</a>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Effacer</button>
             </div>
         </div>

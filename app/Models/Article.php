@@ -5,20 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class Article extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'address',
-        'phone',
-        'date_birth',
-        'city_id',
+        'en_title',
+        'en_text',
+        'fr_title',
+        'fr_text',
         'user_id'
     ];
-
-    public function getRouteKeyName()
-    {
-        return 'user_id';
-    }
+ 
 }
