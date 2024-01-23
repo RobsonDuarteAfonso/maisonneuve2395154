@@ -14,16 +14,21 @@
     </div>
     <div class="col-12 bg-secondary text-center py-3">
         <nav>
-            @guest
-            <a href="/" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Home</a>
-            <a href="/login" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Login</a>
-            <a href="/registration" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Registration</a>
-            @else
-            <a href="/students" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Students</a>
-            <a href="/articles" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Forum</a>
-            <a href="/files" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Files Directory</a>
-            <a href="/logout" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">Logout</a>
-            @endguest        
+            <div class="menu-center">
+                @php $locale = session()->get('locale') @endphp
+                <a href="/" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">@lang('lang.text_home')</a>
+                @guest
+                <a href="/login" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">@lang('lang.text_login')</a>
+                <a href="/registration" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">@lang('lang.text_registration')</a>
+                @else
+                <a href="/students" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">@lang('lang.text_students')</a>
+                <a href="/articles" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">@lang('lang.text_forum')</a>
+                <a href="/files" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">@lang('lang.text_filedirectory')</a>
+                <a href="/logout" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-uppercase fs-5 px-3">@lang('lang.text_logout')</a>
+                @endguest
+                <a class="px-2 py-2 menu-center @if($locale == 'en') bg-light @endif" href="{{route('lang', 'en')}}"><img src="{{ asset('images/flag1.png') }}" alt="flag" class="flag"></a>
+                <a class="px-2 py-2 menu-center @if($locale == 'fr') bg-light @endif" href="{{route('lang', 'fr')}}"><img src="{{ asset('images/flag2.png') }}" alt="flag" class="flag"></a>
+            </div>
         </nav>
     </div>
 
@@ -40,6 +45,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
+    @elseif(session('error'))
+        <div class="container-lg mt-4">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ session('error')}}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>    
     @endif
 
     @yield('content')

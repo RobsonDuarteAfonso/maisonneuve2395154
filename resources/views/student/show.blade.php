@@ -6,42 +6,42 @@
         
         <div class="card-header d-inline-flex">
             <div class="col-6 text-start">
-                <h1>Détail de l'étudiant</h1>
+                <h1>@lang('lang.text_students_show')</h1>
             </div>
             <div class="col-6 d-flex justify-content-end align-items-center">
-                <a class="btn btn-outline-secondary" href="{{ route('student.index') }}" role="button">Returner</a>
+                <a class="btn btn-outline-secondary" href="{{ route('student.index') }}" role="button">@lang('lang.text_return')</a>
             </div>            
         </div>
 
         <div class="card-body">
 
             <div class="mb-3">
-                <p class="fw-bold">Nom<p>
+                <p class="fw-bold">@lang('lang.text_name')<p>
                 <p>{{ $user->name }}</p>
             </div>
 
             <div class="mb-3">
-                <p class="fw-bold">Courriel<p>
+                <p class="fw-bold">@lang('lang.text_email')<p>
                 <p>{{ $user->email }}</p>
             </div>
 
             <div class="mb-3">
-                <p class="fw-bold">Adresse<p>
+                <p class="fw-bold">@lang('lang.text_address')<p>
                 <p>{{ $student->address }}</p>
             </div>
 
             <div class="mb-3">
-                <p class="fw-bold">Phone<p>
+                <p class="fw-bold">@lang('lang.text_phone')<p>
                 <p>{{ $student->phone }}</p>
             </div>
 
             <div class="mb-3">
-                <p class="fw-bold">Date de Naissance<p>
+                <p class="fw-bold">@lang('lang.text_birth')<p>
                 <p>{{ $student->date_birth }}</p>
             </div>
 
             <div class="mb-3">
-                <p class="fw-bold">Ville<p>
+                <p class="fw-bold">@lang('lang.text_city')<p>
                 <p>{{ $city->name }}</p>
             </div>
 
@@ -49,8 +49,8 @@
 
         <div class="card-footer d-inline-flex">
             <div class="col-12">
-                <a href="{{ route('student.edit', $student->user_id)}}" class="btn btn-warning">Modifier</a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Effacer</button>
+                <a href="{{ route('student.edit', $student->user_id)}}" class="btn btn-warning">@lang('lang.text_edit')</a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">@lang('lang.text_delete')</button>
             </div>
         </div>
         
@@ -63,18 +63,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Effacer la donnée</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">@lang('lang.text_modal_delete')</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-       Etes-vous sûr de efffacer la donnée?
-      </div>
+      <div class="modal-body">@lang('lang.text_modal_quest')</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('lang.text_no')</button>
         <form method="post">
             @csrf
             @method('delete')
-            <input type="submit" value="Effacer" class="btn btn-danger">
+            <input type="submit" value="@lang('lang.text_yes')" class="btn btn-danger">
         </form>
       </div>
     </div>

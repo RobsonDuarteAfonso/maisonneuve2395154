@@ -66,7 +66,7 @@ class StudentController extends Controller
         $userId = Auth::id();
 
         if ($student->user_id != $userId) {
-            return redirect(route('student.index'))->withErrors("Vous n'êtes pas autorisé à accéder à cet élève.");
+            return redirect(route('student.index'))->withErrors(trans('lang.msg_student_access'));
         }
 
         $user = User::find($student->user_id);
@@ -83,7 +83,7 @@ class StudentController extends Controller
         $userId = Auth::id();
 
         if ($student->user_id != $userId) {
-            return redirect(route('student.index'))->withErrors("Vous n'êtes pas autorisé à modifier cet élève.");
+            return redirect(route('student.index'))->withErrors(trans('lang.msg_student_access'));
         }
 
         $user = User::find($student->user_id);
@@ -111,7 +111,7 @@ class StudentController extends Controller
             'city_id' => $request->city_id
         ]);
 
-        return redirect(route('student.show', $student->user_id))->withSuccess('Étudiant mis a jour!');
+        return redirect(route('student.show', $student->user_id))->withSuccess(trans('lang.msg_student_updated'));
     }
 
     /**
@@ -123,6 +123,6 @@ class StudentController extends Controller
         $student->delete();
         $user->delete();
 
-        return redirect(route('student.index'))->withSuccess('Étudiant effacé!');
+        return redirect(route('student.index'))->withSuccess(trans('lang.msg_student_deleted'));
     }
 }

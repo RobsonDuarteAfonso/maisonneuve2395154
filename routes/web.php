@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\LocalizationController;
 
 
 //Home
@@ -40,7 +41,7 @@ Route::get('/article-edit/{article}', [ArticleController::class, 'edit'])->name(
 Route::put('/article-edit/{article}', [ArticleController::class, 'update'])->name('article.edit')->middleware('auth');
 Route::delete('/article/{article}', [ArticleController::class, 'destroy'])->name('article.delete')->middleware('auth');
 
-//Upload
+//Files
 //----------------------------------------------------
 Route::get('/files', [FileController::class, 'index'])->name('files.index')->middleware('auth');
 Route::get('/file-create', [FileController::class, 'create'])->name('files.create')->middleware('auth');
@@ -48,5 +49,8 @@ Route::post('/file-create', [FileController::class, 'store'])->name('files.store
 Route::get('/file-edit/{file}', [FileController::class, 'edit'])->name('files.edit')->middleware('auth');
 Route::put('/file-edit/{file}', [FileController::class, 'update'])->name('files.edit')->middleware('auth');
 Route::delete('/file/{file}', [FileController::class, 'destroy'])->name('files.delete')->middleware('auth');
-
 Route::get('/files/{file}', [FileController::class, 'download'])->name('files.download')->middleware('auth');
+
+//Localization
+//----------------------------------------------------
+Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');

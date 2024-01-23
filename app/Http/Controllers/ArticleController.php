@@ -59,7 +59,7 @@ class ArticleController extends Controller
             'user_id' => $userId
         ]);
 
-        return redirect(route('article.show', $newArticle->id))->withSuccess('Article enregistré!');
+        return redirect(route('article.show', $newArticle->id))->withSuccess(trans('lang.msg_article_created'));
     }
 
     /**
@@ -70,7 +70,7 @@ class ArticleController extends Controller
         $userId = Auth::id();
 
         if ($article->user_id != $userId) {
-            return redirect(route('article.index'))->withErrors("Vous n'êtes pas autorisé à accéder à cette article.");
+            return redirect(route('article.index'))->withErrors(trans('lang.msg_article_access'));
         }
 
         return view('article.show', compact('article'));
@@ -84,7 +84,7 @@ class ArticleController extends Controller
         $userId = Auth::id();
 
         if ($article->user_id != $userId) {
-            return redirect(route('article.index'))->withErrors("Vous n'êtes pas autorisé à modifier cette article.");
+            return redirect(route('article.index'))->withErrors(trans('lang.msg_article_access'));
         }
 
         return view('article.edit', compact('article'));
@@ -112,7 +112,7 @@ class ArticleController extends Controller
             'user_id' => $userId
         ]);
 
-        return redirect(route('article.show', $article->id))->withSuccess('Article mis a jour!');
+        return redirect(route('article.show', $article->id))->withSuccess(trans('lang.msg_article_updated'));
     }
 
     /**
@@ -122,6 +122,6 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return redirect(route('article.index'))->withSuccess('Article effacé!');
+        return redirect(route('article.index'))->withSuccess(trans('lang.msg_article_deleted'));
     }
 }

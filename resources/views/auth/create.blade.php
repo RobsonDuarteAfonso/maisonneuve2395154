@@ -8,17 +8,17 @@
             
             <div class="card-header d-inline-flex">
                 <div class="col-6 text-start">
-                    <h1>Registration</h1>
+                    <h1>@lang('lang.text_registration')</h1>
                 </div>
                 <div class="col-6 d-flex justify-content-end align-items-center">
-                    <a class="btn btn-outline-secondary" href="{{ route('student.index') }}" role="button">Returner</a>
+                    <a class="btn btn-outline-secondary" href="{{ route('student.index') }}" role="button">@lang('lang.text_return')</a>
                 </div>            
             </div>
 
             <div class="card-body row g-3">
 
                 <div class="mb-3 col-md-6">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">@lang('lang.text_name')</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                     @if($errors->has('name'))
                         <span class="text-danger">{{$errors->first('name')}}</span>
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="mb-3 col-md-6">
-                    <label for="address" class="form-label">Address</label>
+                    <label for="address" class="form-label">@lang('lang.text_address')</label>
                     <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
                     @if($errors->has('address'))
                         <span class="text-danger">{{$errors->first('address')}}</span>
@@ -34,7 +34,7 @@
                 </div>                
 
                 <div class="mb-3 col-md-6">
-                    <label for="email" class="form-label">E-mail</label>
+                    <label for="email" class="form-label">@lang('lang.text_email')</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
                     @if($errors->has('email'))
                         <span class="text-danger">{{$errors->first('email')}}</span>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="mb-3 col-md-6">
-                    <label for="phone" class="form-label">Phone</label>
+                    <label for="phone" class="form-label">@lang('lang.text_phone')</label>
                     <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}">
                     @if($errors->has('phone'))
                         <span class="text-danger">{{$errors->first('phone')}}</span>
@@ -50,7 +50,7 @@
                 </div>                
 
                 <div class="mb-3 col-md-6">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label">@lang('lang.text_password')</label>
                     <input type="password" class="form-control" id="password" name="password">
                     @if($errors->has('password'))
                         <span class="text-danger">{{$errors->first('password')}}</span>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="mb-3 col-md-6">
-                    <label for="date_birth" class="form-label">Birthday</label>
+                    <label for="date_birth" class="form-label">@lang('lang.text_birth')</label>
                     <input type="date" class="form-control" id="date_birth" name="date_birth" value="{{ old('date_birth') }}">
                     @if($errors->has('date_birth'))
                         <span class="text-danger">{{$errors->first('date_birth')}}</span>
@@ -66,7 +66,7 @@
                 </div>
                 
                 <div class="mb-3 col-md-6">
-                    <label for="city_id" class="form-label">City</label>
+                    <label for="city_id" class="form-label">@lang('lang.text_city')</label>
                     <select class="form-select" id="city_id" name="city_id">
                         <option value="">Sélectionner</option>
                         @foreach($cities as $city)
@@ -81,7 +81,7 @@
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-success" type="submit">Create</button>
+                <button class="btn btn-success" type="submit">@lang('lang.text_create')</button>
             </div>
             
         </div>

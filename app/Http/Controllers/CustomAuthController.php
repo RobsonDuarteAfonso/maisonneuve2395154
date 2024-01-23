@@ -55,7 +55,7 @@ class CustomAuthController extends Controller
             $user->save();
             
             if (!$user->save()) {
-                throw new \Exception('User registration was not possible.');
+                return redirect(route('registration'))->withErrors(trans('lang.msg_auth_error'));
             }
 
             $createdId = $user->id;
@@ -68,12 +68,12 @@ class CustomAuthController extends Controller
             $student->user_id = $createdId;
 
             if (!$student->save()) {
-                throw new \Exception('User registration was not possible.');
+                return redirect(route('registration'))->withErrors(trans('lang.msg_auth_error'));
             }
 
             DB::commit();
 
-            return redirect(route('login'))->withSuccess('Registration completed successfully');
+            return redirect(route('login'))->withSuccess(trans('lang.msg_auth_success'));
 
         } catch (\Throwable $e) {
 
@@ -95,7 +95,7 @@ class CustomAuthController extends Controller
 
         
         if(!Auth::validate($credentials)):
-            return redirect(route('login'))->withErrors(trans('auth.password'))->withInput();
+            return redirect(route('login'))->withErrors(trans('lang.msg_auth_login'))->withInput();
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);

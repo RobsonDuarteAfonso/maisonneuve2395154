@@ -16,14 +16,16 @@ class FileController extends Controller
     public function index()
     {
         $files = File::select(
-            'id',
+            'files.id as id',
             'files.en_title',
             'files.fr_title',
             'files.type',
             'files.size',
             'files.created_at',
             'files.user_id',
+            'users.name'
         )
+        ->join('users', 'users.id','=','user_id')
         ->orderBy('created_at', 'desc')
         ->paginate(5);
 
@@ -72,10 +74,10 @@ class FileController extends Controller
 
             $request->file('file')->storeAs('uploads', $randomName, 'public');
 
-            return redirect(route('files.index'))->withSuccess('File enregistré!');
+            return redirect(route('files.index'))->withSuccess(trans('lang.msg_file_registered'));
         }
 
-        return redirect()->back()->withErrors(['error' => 'Falha ao enviar o arquivo']);
+        return redirect()->back()->withErrors(trans('lang.msg_file_error'));
     }
 
     /**
@@ -94,7 +96,7 @@ class FileController extends Controller
         $userId = Auth::id();
 
         if ($file->user_id != $userId) {
-            return redirect(route('files.index'))->withErrors("Vous n'êtes pas autorisé à modifier cette file.");
+            return redirect(route('files.index'))->withErrors(trans('lang.msg_file_access'));
         }
 
         return view('files.edit', compact('file'));
@@ -118,7 +120,7 @@ class FileController extends Controller
             'user_id' => $userId
         ]);
 
-        return redirect(route('files.index'))->withSuccess('File mis a jour!');
+        return redirect(route('files.index'))->withSuccess(trans('lang.msg_file_updated'));
     }
 
     /**
@@ -131,7 +133,7 @@ class FileController extends Controller
 
         $file->delete();
 
-        return redirect(route('files.index'))->withSuccess('File effacé!');
+        return redirect(route('files.index'))->withSuccess(trans('lang.msg_file_deleted'));
     }
 
     public function download(File $file)
