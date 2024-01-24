@@ -66,5 +66,6 @@ return [
     'msg_file_deleted' => 'Le fichier a été supprimé avec succès',
     'msg_student_access' => "Vous n'êtes pas autorisé à modifier les données des étudiants.",
     'msg_student_updated' => "L'étudiant a été mis à jour avec succès",
-    'msg_student_deleted' => "L'étudiant a été supprimé avec succès",      
+    'msg_student_deleted' => "L'étudiant a été supprimé avec succès",
+    'msg_student_nodelete' => "Il n'est pas possible de supprimer un utilisateur qui a des articles publiés sur le forum ou des fichiers ajoutés au répertoire de fichiers.",
 ];

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\City;
 use App\Models\User;
+use App\Models\File;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -119,10 +121,20 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        $fileRecord = File::where('user_id', $student->user_id)->first();
+        $articleRecord = Article::where('user_id', $student->user_id)->first();
+
+        var_dump($fileRecord);
+        var_dump($articleRecord);
+        
+        if($fileRecord || $articleRecord) {
+            return redirect(route('student.index'))->withErrors(trans('lang.msg_student_nodelete'));
+        }
+
         $user = User::find($student->user_id);
         $student->delete();
         $user->delete();
 
-        return redirect(route('student.index'))->withSuccess(trans('lang.msg_student_deleted'));
+        return redirect(route('logout'))->withSuccess(trans('lang.msg_student_deleted'));
     }
 }

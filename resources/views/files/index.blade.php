@@ -27,11 +27,11 @@
                     @forelse($files as $file)
                     <tr>
                         <td>
-                        @if(in_array($file->type, ['doc', 'docx']))
+                        @if(in_array($file->type, ['doc', 'docx', 'DOCX', 'DOC']))
                             <img src="{{ asset('images/doc.png') }}" alt="type doc" class="custom-image">
-                        @elseif($file->type == 'zip')
+                        @elseif(in_array($file->type, ['zip', 'ZIP']))
                             <img src="{{ asset('images/zip.png') }}" alt="type png" class="custom-image">
-                        @elseif($file->type == 'pdf')
+                        @elseif(in_array($file->type, ['pdf', 'PDF']))
                             <img src="{{ asset('images/pdf.png') }}" alt="type pdf" class="custom-image">
                         @endif
                         </td>

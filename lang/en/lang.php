@@ -66,5 +66,6 @@ return [
     'msg_file_deleted' => 'The file was successfully deleted',
     'msg_student_access' => 'You are not authorized to modify student data.',
     'msg_student_updated' => 'The student was successfully updated',
-    'msg_student_deleted' => 'The student was successfully deleted',    
+    'msg_student_deleted' => 'The student was successfully deleted',
+    'msg_student_nodelete' => 'It is not possible to delete a user who has articles published in the Forum or files added to the File Directory.',
 ];
